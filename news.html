@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Bootstrap 核心 CSS 文件 -->
+		<link rel="stylesheet" href="js/bootstrap-3.3.7/css/bootstrap.min.css" />
+		<!--自己的css-->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+		<!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+		<!--[if lt IE 9]>
+         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+         <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+      	<![endif]-->
+
+		<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+		<script src="js/jquery/jquery-1.9.1.min.js"></script>
+
+		<!-- Bootstrap 核心 JavaScript  文件 -->
+		<script src="js/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<script type="text/javascript" src="http://www.ijquery.cn/js/jquery.placeholder.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="js/wow/animate.min.css" />
+		<title>新闻中心</title>
+	</head>
+	<!--实现轮播部分js-->
+	<script type="text/javascript">
+		$(function() {
+
+			var aPage = $('#main .page a'); //分页按钮
+			var aImg = $('#main .box1 img'); //图像集合
+			var iSize = aImg.size(); //图像个数
+			var index = 0; //切换索引
+			var t;
+			$('#btnLeft').click(function() { //左边按钮点击
+				index--;
+				if(index < 0) {
+					index = iSize - 1
+				}
+				change(index)
+			})
+			$('#btnRight').click(function() { //右边按钮点击
+				index++;
+				if(index > iSize - 1) {
+					index = 0
+				}
+				change(index)
+			})
+			//分页按钮点击
+			aPage.click(function() {
+				index = $(this).index();
+				change(index)
+			});
+			//切换过程
+			function change(index) {
+				aPage.removeClass('active');
+				aPage.eq(index).addClass('active');
+				aImg.stop();
+				//隐藏除了当前元素，所以图像
+				aImg.eq(index).siblings().animate({
+					opacity: 0
+				}, 1000)
+				//显示当前图像
+				aImg.eq(index).animate({
+					opacity: 1
+				}, 1000)
+			}
+
+			function autoshow() {
+				index = index + 1;
+				if(index <= iSize - 1) {
+					change(index);
+				} else {
+					index = 0;
+					change(index);
+				}
+
+			}
+			int = setInterval(autoshow, 3000);
+
+			function clearInt() {
+				$('#btnLeft,#btnRight,.page a').mouseover(function() {
+					clearInterval(int);
+				})
+
+			}
+
+			function setInt() {
+				$('#btnLeft,#btnRight,.page a').mouseout(function() {
+					int = setInterval(autoshow, 3000);
+				})
+			}
+			clearInt();
+			setInt();
+		})
+	</script>
+
+	<body>
+		<!--头部-->
+		<header class="person_head">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-xs-2">
+						<a href=""><img src="img/xie_cai.png" class="img-responsive" alt="" /></a>
+					</div>
+					<div class="col-md-10 col-xs-10">
+						<!--导航部分-->
+						<nav class="clearfix">
+							<ul class="clearfix">
+								<li>
+									<a href="index.html">首页</a>
+								</li>
+								<li>
+									<a href="business.html">企业介绍</a>
+								</li>
+								<li>
+									<a href="product.html">产品介绍</a>
+								</li>
+								<li>
+									<a href="team.html">团队介绍</a>
+								</li>
+								<li>
+									<a href="design.html">设计理念</a>
+								</li>
+								<li>
+									<a href="#" class="naved1">新闻中心</a>
+								</li>
+								<li>
+									<a href="price.html">专业服务</a>
+								</li>
+								<li>
+									<a href="contact.html">联系我们</a>
+								</li>
+								<li>
+									<a href="#" class="naved">下载</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--主体部分-->
+		<div class="news_content">
+			<div class="slider">
+				<div id="main">
+					<div class="box1">
+						<img style="opacity:1;filter:alpha(opacity=100);" src="img/news_banner1.png" class="img-responsive" />
+						<img src="img/news_banner2.jpg" />
+						<img src="img/news_banner3.jpg" />
+					</div>
+					<div class='page'>
+						<a class='active' href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
+						<a href="javascript:void(0);"></a>
+					</div>
+				</div>
+			</div>
+			<div class="news_content1">
+				<div class="container clearfix">
+					<div class="news_content1_l">
+						<div class="news_content1_l_info">
+							<p><a href="news1.html">智能手机的硬件创新大盘点</a></p>
+							<img src="img/news_content1_1.png" class="img-responsive" />
+							<p>2018年是全面屏爆发的一年，整个产业带给消费者最大的视觉冲击都显示在屏幕上</p>
+							<span class="news_time">发布于2018.1.23-00:23</span>
+						</div>
+						<div class="news_content1_l_info">
+							<p><a href="news1.html">智能手机的硬件创新大盘点</a></p>
+							<img src="img/news_content1_1.png" class="img-responsive" />
+							<p>2018年是全面屏爆发的一年，整个产业带给消费者最大的视觉冲击都显示在屏幕上</p>
+							<span class="news_time">发布于2018.1.23-00:23</span>
+						</div>
+						<div class="news_content1_l_info">
+							<p><a href="news1.html">智能手机的硬件创新大盘点</a></p>
+							<img src="img/news_content1_1.png" class="img-responsive" />
+							<p>2018年是全面屏爆发的一年，整个产业带给消费者最大的视觉冲击都显示在屏幕上</p>
+							<span class="news_time">发布于2018.1.23-00:23</span>
+						</div>
+						<nav id="news_page" aria-label="Page navigation">
+							<ul class="pagination clearfix">
+								<li>
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">上一页</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">1</a>
+								</li>
+								<li>
+									<a href="#">2</a>
+								</li>
+								<li>
+									<a href="#">3</a>
+								</li>
+								<li>
+									<a href="#">4</a>
+								</li>
+								<li>
+									<a href="#">5</a>
+								</li>
+								<li>
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">下一页</span>
+									</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<div class="news_content1_r">
+						<div class="news_content1_r_1">
+							<div>
+								<span><img src="img/news_pai.png"/>排行</span>
+							</div>
+							<div>
+								<a href="news1.html"><p class="number"><number>1</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p class="number"><number>2</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p class="number"><number>3</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>4</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>5</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>6</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>7</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>8</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+								<a href="news1.html"><p><number>9</number>阿里战略入股居然之家：消费互联网升级产业互联网本金额模拟</p></a>
+							</div>
+						</div>
+						<div class="news_content1_r_2">
+							<div>
+								<span class="news_title"><img src="img/news_lei.png"/>板块分类</span>
+							</div>
+							<div  class="news_ban">
+								<div class="clearfix">
+									<span><a href="#">官方资讯</a></span>
+									<span><a href="#">行业近况</a></span>
+								</div>
+								<div class="clearfix">
+									<span><a href="#">产品资讯</a></span>
+									<span><a href="#">媒体报道</a></span>
+								</div>
+							</div>
+						</div>
+						<div class="news_content1_r_3">
+							<div>
+								<span class="news_title"><img src="img/news_hui.png"/>会员专享</span>
+							</div>
+							<div class="news_er">
+								<img src="img/erweima.png"/>
+								<p>扫一扫，惊喜不断</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!--底部-->
+		<div class="person_foot">
+			<div class="container">
+				<div class="row">
+					<p>© Copyright 2012 - 2017 | 西安协云合强网络科技有限公司 陕ICP备15014325号-1</p>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/base.js"></script>
+</html>
