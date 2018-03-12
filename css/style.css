@@ -2348,6 +2348,7 @@ div.border2 {
 	background: -moz-linear-gradient(top, #80CBF5, #2C9CF0);
 	background: linear-gradient(to top, #80CBF5, #2C9CF0);
 	position: relative;
+	height:100%;
 }
 
 .cases_word p {
@@ -2521,6 +2522,9 @@ div.border2 {
 /*banner部分和标题部分媒体查询*/
 
 @media only screen and (max-width:1366px) {
+	.cases_content{
+		min-height:700px;
+	}
 	.cases_word p {
 		font-size: 18px;
 	}
@@ -2653,6 +2657,9 @@ div.border2 {
 }
 
 @media only screen and (max-width:1200px) {
+	.cases_content{
+		min-height:650px;
+	}
 	nav li {
 		padding: 0 17px;
 	}
@@ -2787,6 +2794,9 @@ div.border2 {
 }
 
 @media only screen and (max-width:991px) {
+	.cases_content{
+		min-height:500px;
+	}
 	nav li {
 		padding: 0 7px;
 	}
